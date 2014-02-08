@@ -7,7 +7,7 @@ Determine vector direction left or right
 import gramme, datetime, time
 from os import rename
 from logbook import Logger
-import library.data_formatter.iPhone as iPhone
+import data_formatter.iPhone as iPhone
 
 base_time = time.time()
 log = Logger('log_data.py', level=0)
@@ -17,7 +17,7 @@ name = raw_input("Name the log (blank for current time stamp) : ")
 if name : name += ".txt"
 else : name = str(datetime.datetime.now())+".txt"
 
-log_file = open("analysis/logs/"+name, "w+")
+log_file = open("logs/"+name, "w+")
 
 
 @gramme.server(3030)
