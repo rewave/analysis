@@ -20,10 +20,8 @@ wz = data(:,7);
 function plot_meta(x,y)
 	x_l=input('x_label : ', 's');
 	y_l=input('y_label : ', 's');
-	figure('name', strcat('Plot of ', y, ' against ', x));
+	figure('name', strcat('Plot of ', y_l, ' against ', x_l));
 	plot(x,y);
-	x_label(x_l);
-	y_label(y_l);
+	xlabel(x_l);
+	ylabel(y_l);
 end
-
-plot_meta();
