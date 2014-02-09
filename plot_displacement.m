@@ -14,23 +14,25 @@ function plot_motion(lower=0, upper=0)
 	num_elements=length(t(lower:upper));
 
 	figure('name', sprintf('%s | Motion in space | lower = %d, upper = %d', loaded_pattern, lower, upper));
-	xlabel('x');
-	ylabel('y');
 	
 	sx = sy = sz = zeros(num_elements, 1);
-
-	ux = uy = uz = 0; %initial velocity
+	U = [0; 0; 0]; %initial velocity
 	
-	for i=1:num_elements
+	for i=lower:upper
 		if(i>1)
 			t_instant = t(i) - t(i-1);
 		else
 			t_instant = t(i);
 		end
-		
+
+		[U, S] = displacement(U, [ax(i); ay(i); az(i)], [t_instant; t_instant; t_instant]);
+
+		sx(i) = S(1); sy(i) = S(2); sz(i) = S(3);
 	end
 
 	plot3(sx, sy, sz);
+	xlabel('x');
+	ylabel('y');
 
 	clear temp i sx sy sz ux yy yz t_instant num_elements;
 end
