@@ -1,5 +1,5 @@
 %plot motion of phone in 3D space using formula s = ut + 0.5at^2 (starting at origin)
-function plot_motion(lower=0, upper=0)
+function plot_displacement(lower=0, upper=0)
 	global t ax ay az loaded_pattern;
 
 	if(lower==0 && upper==0)
@@ -25,7 +25,7 @@ function plot_motion(lower=0, upper=0)
 			t_instant = t(i);
 		end
 
-		[U, S] = displacement(U, [ax(i); ay(i); az(i)], [t_instant; t_instant; t_instant]);
+		[U, S] = displacement([0; 0; 0], [ax(i); ay(i); az(i)], [t_instant; t_instant; t_instant]);
 
 		sx(i) = S(1); sy(i) = S(2); sz(i) = S(3);
 	end
