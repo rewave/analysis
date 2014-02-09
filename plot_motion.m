@@ -10,5 +10,4 @@ function plot_motion(lower=0, upper=0)
 	plot3(ax(lower:upper),ay(lower:upper),az(lower:upper));
 	xlabel('x');
 	ylabel('y');
-
-endfunction
+end
