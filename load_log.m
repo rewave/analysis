@@ -15,4 +15,4 @@ global wy = data(:,6);
 global wz = data(:,7);
 global loaded_pattern = log_file;
 printf('Loaded file %s\nThe following variables are available : t, ax, ay, az, wx, wy, wz\n', log_file);
-clear log_file, data;
+clear log_file data;

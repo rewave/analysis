@@ -25,5 +25,5 @@ function time_interval()
 	line([0;length(readings)], [mean(temp); mean(temp)]);
 	
 	%
-	clear temp, readings;
+	clear temp readings;
 end
