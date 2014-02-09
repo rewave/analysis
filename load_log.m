@@ -1,5 +1,5 @@
-%visualize data logs
-
+%Load logged data from sensors into memory
+clear all;
 addpath('logs/');
 ls logs;
 log_file = input('Enter file to visualize : ', 's');

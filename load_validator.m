@@ -1,3 +1,5 @@
+%Check if 't'; 'ax'; 'ay'; 'az'; 'wx'; 'wy'; 'wz' are loaded into memory.
+
 required_variables = {'t'; 'ax'; 'ay'; 'az'; 'wx'; 'wy'; 'wz'};
 for i=1:length(required_variables)
 	if(exist(required_variables{i}, 'var') == 0)
@@ -7,3 +9,4 @@ for i=1:length(required_variables)
 		printf('%s loaded\n', required_variables{i});
 	end
 end
+clear required_variables;
