@@ -1,9 +1,3 @@
-%calculate displacement of a point
-function [v, s] = displacement(u, t, a)
-	s = u*t + 0.5*a*(t^2);
-	v = u + a*t;
-end
-
 %plot motion of phone in 3D space using formula s = ut + 0.5at^2 (starting at origin)
 function plot_motion(lower=0, upper=0)
 	global t ax ay az loaded_pattern;
@@ -24,8 +18,27 @@ function plot_motion(lower=0, upper=0)
 	ylabel('y');
 	
 	sx = sy = sz = zeros(num_elements, 1);
+
+	ux = uy = uz = 0; %initial velocity
+	
 	for i=1:num_elements
+		if(i>1)
+			t_instant = t(i) - t(i-1);
+		else
+			t_instant = t(i);
+		end
+		
 	end
 
-	clear temp i sx sy sz num_elements;
+	plot3(sx, sy, sz);
+
+	clear temp i sx sy sz ux yy yz t_instant num_elements;
+end
+
+%calculate displacement of a point
+%params displacement(u, t, a)
+%return [v, s]
+function [v, s] = displacement(u, t, a)
+	s = u.*t + (0.5*a).*(t.^2);
+	v = u + a.*t;
 end
