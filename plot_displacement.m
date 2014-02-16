@@ -34,6 +34,10 @@ function plot_displacement(lower=0, upper=0)
 	xlabel('x');
 	ylabel('y');
 
+	figure('name', sprintf('%s | Motion in plane | lower = %d, upper = %d', loaded_pattern, lower, upper));
+	plot(1:length(sx), [sx, sy, sz]);
+	legend('sx', 'sy', 'sz');
+
 	clear temp i sx sy sz ux yy yz t_instant num_elements;
 end
 

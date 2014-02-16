@@ -1,0 +1,5 @@
+Logbook==0.6.0
+argparse==1.2.1
+-e git+https://github.com/shivekkhurana/gramme.git@69e98b26d7df3a025252d30f2ed94223801a780f#egg=gramme-master
+msgpack-python==0.4.0
+wsgiref==0.1.2
