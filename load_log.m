@@ -2,6 +2,8 @@
 clear all;
 addpath('logs/');
 ls logs;
+
+printf('Use templates using templates/a.txt\n');
 log_file = input('Enter file to visualize : ', 's');
 
 data = load(log_file);
