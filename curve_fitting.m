@@ -5,24 +5,15 @@ function curve_fitting(file_name, is_template, orders=[3])
 	original = [ax ay az];
 
 	for	i=orders
-		P = [
-			polyfit(ax, t, i) 
-			polyfit(ay, t, i) 
-			polyfit(az, t, i)
-			];
-		
+		P = [polyfit(ax, t, i); polyfit(ay, t, i); polyfit(az, t, i)];
 
-		X = [
-			linspace(min(ax), max(ax), 101) 
-			linspace(min(ay), max(ay), 101) 
-			linspace(min(az), max(az), 101)
-			];
+		% P = [
+		%	ax, bx, cx, dx
+		%	ay, by, cy, dy
+		%	az, bz, cz, dz
+		%	]
 
-		Y = [
-			polyval(P(1,:), X(1, :))
-			polyval(P(2, :), X(2, :))
-			polyval(P(3, :), X(3, :))
-			]; 
+		Y = [polyval(P(1,:), t), polyval(P(2, :), t), polyval(P(3, :), t)]; 
 		
 		colors = [
 			'green'
@@ -33,8 +24,11 @@ function curve_fitting(file_name, is_template, orders=[3])
 		figure('name', sprintf('%s : order = %d', loaded_pattern, i));
 		hold on;
 
-		for i = 1:3;	
-			plot(X(i, :), Y(i, :), '-', 'color', colors(i), original(:,i), t, '*', 'color', colors(i))
+		for i = 1:3;
+			plot(t, original(:, i),'s', 'color', colors(i));
+			%size(Y)
+			plot(t, Y(:,i),'-' ,'color', colors(i));
+			%plot(X(i, :), Y(i, :), '-', 'color', colors(i), original(:,i), t, 'v', 'color', colors(i))
 		end
 	end
 end

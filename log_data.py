@@ -27,8 +27,8 @@ def main(data):
 		line = str(time.time()-base_time)
 		for observation in data:
 			line += ",%s"%str(observation)
-		log.info(line)
-	log_file.write(line+"\n")
+			log.info(line)
+		log_file.write(line+"\n")
 	except KeyboardInterrupt:
 		log_file.close()
 		raise #let gramme handle this
