@@ -1,2 +1,5 @@
 #python cache
 *.pyc
+
+octave-core
+octave-workspace
