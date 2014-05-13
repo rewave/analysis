@@ -1,7 +1,9 @@
- trueacceleration[0] = (a[0]*(cos(g[2])*cos(g[0])+sin(g[2])*sin(g[1])*sin(g[0])) + a[1]*(cos(g[1])*sin(g[0])) + a[2]*(-sin(g[2])*cos(g[0])+cos(g[2])*sin(g[1])*sin(g[0])));
+ trueacceleration[0] = (ax*(cos(gz)*cos(gx)+sin(gz)*sin(gy)*sin(gx)) + ay*(cos(gy)*sin(gx)) + az*(-sin(gz)*cos(gx)+cos(gz)*sin(gy)*sin(gx)));
             
 
- trueacceleration[1] =  (a[0]*(-cos(g[2])*sin(g[0])+sin(g[2])*sin(g[1])*cos(g[0])) + a[1]*(cos(g[1])*cos(g[0])) + a[2]*(sin(g[2])*sin(g[0])+ cos(g[2])*sin(g[1])*cos(g[0])));
+ trueacceleration[1] =  (ax*(-cos(gz)*sin(gx)+sin(gz)*sin(gy)*cos(gx)) + ay*(cos(gy)*cos(gx)) + az*(sin(gz)*sin(gx)+ cos(gz)*sin(gy)*cos(gx)));
             
 
-trueacceleration[2] =  (a[0]*(sin(g[2])*cos(g[1])) + a[1]*(-sin(g[1])) + a[2]*(cos(g[2])*cos(g[1])));
+trueacceleration[2] =  (ax*(sin(gz)*cos(gy)) + ay*(-sin(gy)) + az*(cos(gz)*cos(gy)));
+
+http://stackoverflow.com/questions/5464847/transforming-accelerometers-data-from-devices-coordinates-to-real-world-coordi
