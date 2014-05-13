@@ -1,0 +1,7 @@
+ trueacceleration[0] = (a[0]*(cos(g[2])*cos(g[0])+sin(g[2])*sin(g[1])*sin(g[0])) + a[1]*(cos(g[1])*sin(g[0])) + a[2]*(-sin(g[2])*cos(g[0])+cos(g[2])*sin(g[1])*sin(g[0])));
+            
+
+ trueacceleration[1] =  (a[0]*(-cos(g[2])*sin(g[0])+sin(g[2])*sin(g[1])*cos(g[0])) + a[1]*(cos(g[1])*cos(g[0])) + a[2]*(sin(g[2])*sin(g[0])+ cos(g[2])*sin(g[1])*cos(g[0])));
+            
+
+trueacceleration[2] =  (a[0]*(sin(g[2])*cos(g[1])) + a[1]*(-sin(g[1])) + a[2]*(cos(g[2])*cos(g[1])));
