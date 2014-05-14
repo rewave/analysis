@@ -9,3 +9,5 @@ trueacceleration[2] =  (ax*(sin(gz)*cos(gy)) + ay*(-sin(gy)) + az*(cos(gz)*cos(g
 http://stackoverflow.com/questions/5464847/transforming-accelerometers-data-from-devices-coordinates-to-real-world-coordi
 
 http://www.starlino.com/imu_guide.html
+
+http://stackoverflow.com/questions/7950096/devicemotion-relative-to-world-multiplybyinverseofattitude/8006783#8006783
