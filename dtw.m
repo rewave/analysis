@@ -1,58 +1,38 @@
-function [Dist,D,k,w]=dtw(t,r)
-%Dynamic Time Warping Algorithm
-%Dist is unnormalized distance between t and r
-%D is the accumulated distance matrix
-%k is the normalizing factor
-%w is the optimal path
-%t is the vector you are testing against
-%r is the vector you are testing
-[rows,N]=size(t);
-[rows,M]=size(r);
-%for n=1:N
-%    for m=1:M
-%        d(n,m)=(t(n)-r(m))^2;
-%    end
-%end
-d=(repmat(t(:),1,M)-repmat(r(:)',N,1)).^2; %this replaces the nested for loops from above Thanks Georg Schmitz 
+% Copyright (C) 2013 Quan Wang <wangq10@rpi.edu>,
+% Signal Analysis and Machine Perception Laboratory,
+% Department of Electrical, Computer, and Systems Engineering,
+% Rensselaer Polytechnic Institute, Troy, NY 12180, USA
 
-D=zeros(size(d));
-D(1,1)=d(1,1);
+% dynamic time warping of two signals
 
-for n=2:N
-    D(n,1)=d(n,1)+D(n-1,1);
+function d=dtw(s,t,w=10)
+% s: signal 1, size is ns*k, row for time, colume for channel 
+% t: signal 2, size is nt*k, row for time, colume for channel 
+% w: window parameter
+%      if s(i) is matched with t(j) then |i-j|<=w
+% d: resulting distance
+
+if nargin<3
+    w=Inf;
 end
-for m=2:M
-    D(1,m)=d(1,m)+D(1,m-1);
+
+ns=length(s);
+nt=length(t);
+if size(s,2)~=size(t,2)
+    error('Error in dtw(): the dimensions of the two input signals do not match.');
 end
-for n=2:N
-    for m=2:M
-        D(n,m)=d(n,m)+min([D(n-1,m),D(n-1,m-1),D(n,m-1)]);
+w=max(w, abs(ns-nt)); % adapt window size
+
+%% initialization
+D=zeros(ns+1,nt+1)+Inf; % cache matrix
+D(1,1)=0;
+
+%% begin dynamic programming
+for i=1:ns
+    for j=max(i-w,1):min(i+w,nt)
+        oost=norm(s(i,:)-t(j,:));
+        D(i+1,j+1)=oost+min( [D(i,j+1), D(i+1,j), D(i,j)] );
+        
     end
 end
-
-Dist=D(N,M);
-n=N;
-m=M;
-k=1;
-w=[];
-w(1,:)=[N,M];
-while ((n+m)~=2)
-    if (n-1)==0
-        m=m-1;
-    elseif (m-1)==0
-        n=n-1;
-    else 
-      [values,number]=min([D(n-1,m),D(n,m-1),D(n-1,m-1)]);
-      switch number
-      case 1
-        n=n-1;
-      case 2
-        m=m-1;
-      case 3
-        n=n-1;
-        m=m-1;
-      end
-  end
-    k=k+1;
-    w=cat(1,w,[n,m]);
-end
+d=D(ns+1,nt+1);
